@@ -29,7 +29,20 @@ def test_ask_endpoint():
     assert len(response.json()["answer"]) > 0
 
 
+def test_empty_question_returns_400():
+    payload = {"question": "   "}
+
+    response = requests.post(f"{BASE_URL}/ask", json=payload, timeout=10)
+
+    print("Empty-question status code:", response.status_code)
+    print("Empty-question response:", response.json())
+
+    assert response.status_code == 400
+    assert "detail" in response.json()
+
+
 if __name__ == "__main__":
     test_health_endpoint()
     test_ask_endpoint()
+    test_empty_question_returns_400()
     print("All API tests passed successfully.")
