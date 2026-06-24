@@ -232,6 +232,32 @@ http://localhost:8501
 
 ---
 
+## 8b. Run the Backend with Docker (Optional Extension: Option C)
+
+The backend can be containerised with the provided `Dockerfile`.
+
+Make sure Ollama is installed and running on the host machine first
+(`ollama run llama3.2:1b`).
+
+Build the image:
+
+```bash
+docker build -t student-support-backend .
+```
+
+Run the container:
+
+```bash
+docker run -p 8000:8000 student-support-backend
+```
+
+The container reaches the host's Ollama service through
+`host.docker.internal` (configured via the `OLLAMA_URL` environment variable in
+the `Dockerfile`). The backend is then available at `http://127.0.0.1:8000`,
+and the Streamlit frontend can be run on the host as usual.
+
+---
+
 ## 9. API Endpoints
 
 ### Home Endpoint
@@ -417,33 +443,33 @@ Screenshots should be saved in:
 docs/screenshots/
 ```
 
-Required screenshots include:
+Captured screenshots (in `docs/screenshots/`):
 
 ```text
-task1-virtual-environment.png
-task1-installed-libraries.png
-task2-model-pulled.png
-task2-model-running.png
-task2-api-response.png
-task3-fastapi-running.png
-task3-swagger-docs.png
-task3-health-response.png
-task3-ask-response.png
-task4-frontend-page.png
-task4-question-answer.png
-task5-test-script-output.png
-task6-original-prompt.png
-task6-improved-prompt.png
-task6-before-response.png
-task6-after-response.png
-task7-backend-not-running.png
-task7-model-not-running.png
-task7-empty-question.png
-task7-slow-response-loading.png
-task8-log-file.png
-bonus-feedback-ui.png
-bonus-feedback-saved.png
-bonus-feedback-file.png
+task1-virtual environment screenshoot.png
+task1-installed librabries screenshot.png
+task2-model pulled.png
+task2-model running.png
+task2-confirmed local model exists.png
+task2-API-response.png
+task3-fastapi running screenshot.png
+task3-swagger docs.png
+task3-health response.png
+task3-ask response.png
+task4-frontend page.png
+task4-generating response.png
+task4-uestion answer.png
+task5-test script output.png
+task6-before prompt improvement.png
+task6-after prompt improvement.png
+task7-backend not running error.png
+task7-model not running.png
+task7-empty question.png
+task7-slow response loading.png
+task8-logs captured.png
+task9-bonus feedback UI.png
+task9-bonus feedback saved.png
+task9-bonus feedback log.png
 ```
 
 ---
